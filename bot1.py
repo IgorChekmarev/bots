@@ -2,9 +2,14 @@ import asyncio
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
-# ВСТАВЬТЕ СВОИ ДАННЫЕ
-TOKEN = "7590252411:AAHYnqKN7J3KamfDj2sWk5jBWoXc7nxR7mU"
-OWNER_ID = 1877423571  # ID владельца
+import os
+from telegram.ext import Application, CommandHandler, MessageHandler, filters
+
+# Берем токен из переменных окружения, а не из кода!
+TOKEN = os.environ.get('BOT_TOKEN')
+OWNER_ID = int(os.environ.get('OWNER_ID', 0))
+
+# ... остальной код ...
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
